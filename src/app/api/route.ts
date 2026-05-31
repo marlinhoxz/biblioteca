@@ -17,7 +17,7 @@ try {
 
     return NextResponse.json(data);
 
-} catch (error) {
+} catch (error: unknown) {
     
     return NextResponse.json({ error: "Erro interno no servidor" }, { status: 500 });
 

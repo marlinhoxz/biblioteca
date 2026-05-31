@@ -149,10 +149,40 @@
 
 .footer {
   margin-top: auto;
-  padding: 15px;
+  padding: 1px;
   background-color: var(--bg-secondary);
 
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+
+.footerProgress {
+  background: var(--accent-glow);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pDonwload {
+  color: var(--text-muted);
+}
+.footerProgressBar {
+  height: 2px;
+  width: 0;
+  opacity: 0;
+  background: var(--accent-blue);
+  animation: show 0.6s forwards;
+}
+
+@keyframes show {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 50%;
+    opacity: 1;
+  }
 }

@@ -166,12 +166,12 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
             <span><FontAwesomeIcon icon={faDownload} /></span>
           <div className={styles.footerContent}>
             <p>Downloads</p>
-            <p>1 out of 2</p>
+            <p className={styles.pDonwload}>1 out of 2</p>
           </div>
+        </div>
       <div className={styles.footerProgress}>
             <div className={styles.footerProgressBar} style={{ width: "50%" }} />
       </div>
-        </div>
       </aside>
     </>
   );

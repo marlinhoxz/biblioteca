@@ -1,11 +1,27 @@
+"use client";
 
 import Sidebar from "@/components/slidebar/slidebar";
 import styles from "./page.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Cards from "@/components/cards/cards";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [menuAberto, setMenuAberto] = useState(false);
+
+
+
   return (
-    <section>
-<Sidebar />
+    <section className={styles.container}>
+      {!menuAberto && (
+        <button type="button" className={styles.hamburger} onClick={() => setMenuAberto(true)}>
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+      )}
+      <Sidebar isActive={menuAberto} onClose={() => setMenuAberto(false)} />
+      <Cards /> 
     </section>
   );
 }

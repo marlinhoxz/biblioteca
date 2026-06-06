@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.cardsContainer {
+    flex: 1;
+    padding: 30px;
+    margin-top: 30px;
+    overflow: hidden
+}
+
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.searchBar label {
+    font-size: 50px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-primary);
+    padding: 0 10px;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchInput {
+    background-color: var(--bg-secondary);
+    border: 1px solid transparent;
+    outline: none;
+    color: var(--text-primary);
+    border-radius: 20px;
+    padding: 15px 35px;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease, border-color 0.3s
+   
+}
+
+.searchInput:focus {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-soft);
+}
+
+.iconsContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icons {
+    font-size: 18px;
+    background-color: var(--bg-secondary);
+    padding: 12px;
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.icons::before {
+    content: "1";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 35px;
+    left: 30px;
+    width: 15px;
+    height: 15px;
+    font-size: 13px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+}
+
+
+.iconsUser {
+    position: relative;
+}
+
+.iconsUser::before {
+    content: "1";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 30px;
+    left: 45px;
+    width: 15px;
+    height: 15px;
+    font-size: 13px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+}
+
+.iconText {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+    background-color: var(--bg-secondary);
+    padding: 8px 12px;
+    border-radius: 16px;
+}
+
+.userAvatar {
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+}
+
+.userAvatar::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    z-index: 1;
+    background: green;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 3px;
+    right: 3px;
+}
+
+.filterGames {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    
+}
+
+.filterButton {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    background: none;
+    color: var(--text-secondary);
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease;
+}
+
+.filterButton::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.filterButtonActive {
+    color: var(--text-primary);
+}
+
+.filterButtonActive::after {
+    width: 70%;
+}
+
+.addFilter {
+    padding: 12px 12px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    cursor: pointer;
+    color: var(--text-primary);
+    border-radius: 50%;
+    width: 10px;    
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.installFilter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 20px 0px;
+}
+
+.installFilterButton {
+    border: none;
+    cursor: pointer;
+    padding: 8px 8px;
+    border-radius: 3px;
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+
+.installButtonIcon {
+    font-size: 16px;
+    padding: 7px;
+    border-radius: 3px;
+    border: none;
+    background: var(--bg-secondary); 
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.buttonFilter {
+    background-color: var(--bg-secondary);
+    color: var(--text-muted);
+    border: none;
+    cursor: pointer;
+    padding: 8px 8px;
+    border-radius: 3px;
+
+
+}
+
+.gamesList {
+   display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px;
+}

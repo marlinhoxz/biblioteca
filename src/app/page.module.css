@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 22px;
+    opacity: 0;
+    animation: fadeIn .5s ease  .25s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+}

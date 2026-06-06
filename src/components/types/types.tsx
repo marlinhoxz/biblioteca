@@ -7,3 +7,8 @@ export interface DadosApi {
     trofeusTotais?: number
 }
 
+
+
+
+export type GameFilter = "All games" | "Favorites" | "Play Next" | "Go to's" | "Multiplayer"
+

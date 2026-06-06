@@ -8,9 +8,11 @@ import {
   faWandMagicSparkles,
   faPlay,
   faDownload,
+  faBars,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUnrealEngine } from "@fortawesome/free-brands-svg-icons";
-import styles from "./slidebar.module.css"; 
+import styles from "./slidebar.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -48,7 +50,6 @@ const menuItems = [
   },
 ];
 
-
 interface SidebarProps {
   isActive?: boolean;
   onClose?: () => void;
@@ -60,12 +61,11 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
   const [dados, setDados] = useState<DadosApi[]>([]);
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetch("/api");
-        if(!response.ok) {
+        if (!response.ok) {
           throw new Error("Falha ao buscar jogos");
         }
         const data: DadosApi[] = await response.json();
@@ -82,19 +82,21 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
 
   return (
     <>
-      <button
-        type="button"
-        className={`${styles.menuButton} ${isActive ? styles.backdrop : ""}`}
-        aria-label="Fechar menu"
-        onClick={onClose}
-      />
-
       <aside
         className={`${styles.sidebar} ${isActive ? styles.sidebarOpen : ""}`}
       >
         <div className={styles.logo}>
           <span className={styles.logoText}>EPIC</span>
           <span className={styles.logoSub}>...</span>
+
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-label="Abrir menu"
+            onClick={onClose}
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
         </div>
 
         <nav className={styles.navMenu}>
@@ -142,36 +144,43 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
         </nav>
 
         <div className={styles.games}>
-            <p className={styles.clickGame}>Quick Launch</p>
-            {loading ? (
-                <p className={styles.loading}>Carregando jogos...</p>
-            ) : (
-                <ul className={styles.gamesList} role="list">
-                {dados.map(({ id, name, image }) => (
-                    <li key={id} className={styles.gameItem}>
-                    <img src={image} alt={name} className={styles.gameThumbnail} />
-                    <div className={styles.gameInfo}>
-
+          <p className={styles.clickGame}>Quick Launch</p>
+          {loading ? (
+            <p className={styles.loading}>Carregando jogos...</p>
+          ) : (
+            <ul className={styles.gamesList} role="list">
+              {dados.map(({ id, name, image }) => (
+                <li key={id} className={styles.gameItem}>
+                  <img
+                    src={image}
+                    alt={name}
+                    className={styles.gameThumbnail}
+                  />
+                  <div className={styles.gameInfo}>
                     <span className={styles.gameTitle}>{name}</span>
                     <button className={styles.gameButton}>
                       <FontAwesomeIcon icon={faPlay} /> Lounch
                     </button>
-                    </div>
-                    </li>
-                ))}
+                  </div>
+                </li>
+              ))}
             </ul>
-            )}
+          )}
         </div>
         <div className={styles.footer}>
-            <span><FontAwesomeIcon icon={faDownload} /></span>
+          <span>
+            <FontAwesomeIcon icon={faDownload} />
+          </span>
           <div className={styles.footerContent}>
             <p>Downloads</p>
             <p className={styles.pDonwload}>1 out of 2</p>
           </div>
         </div>
-      <div className={styles.footerProgress}>
-            <div className={styles.footerProgressBar} style={{ width: "50%" }} />
-      </div>
+        <div className={styles.footerProgress}>
+          <div className={styles.footerProgressBar} 
+          key={isActive ? "open" : "closed"}
+          style={{ width: "50%" }} />
+        </div>
       </aside>
     </>
   );

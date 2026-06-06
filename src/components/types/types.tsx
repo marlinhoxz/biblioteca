@@ -1,6 +1,9 @@
 export interface DadosApi {
     id: number
-    title: string
-    thumbnail: string
+    name: string
+    image: string
+    installed: boolean
+    trofeusObtidos?: number
+    trofeusTotais?: number
 }
 

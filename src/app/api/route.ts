@@ -5,7 +5,7 @@ export async function GET() {
 
 try {
 
-    const response = await fetch("https://www.freetogame.com/api/games",{
+    const response = await fetch("https://api-projeto-orpin.vercel.app/api",{
         next: {revalidate: 3600 }
     })
 
@@ -14,8 +14,13 @@ try {
     }
 
     const data = await response.json();
-
-    return NextResponse.json(data);
+    const baseUrl = "https://api-projeto-orpin.vercel.app";
+    
+    const dadosUrl = data.map((jogo: { image: string }) => ({
+        ...jogo,
+        image: jogo.image.startsWith("http") ? jogo.image : `${baseUrl}${jogo.image}`,
+    }));
+    return NextResponse.json(dadosUrl);
 
 } catch (error: unknown) {
     

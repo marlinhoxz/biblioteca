@@ -147,12 +147,12 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
                 <p className={styles.loading}>Carregando jogos...</p>
             ) : (
                 <ul className={styles.gamesList} role="list">
-                {dados.map(({ id, title, thumbnail }) => (
+                {dados.map(({ id, name, image }) => (
                     <li key={id} className={styles.gameItem}>
-                    <img src={thumbnail} alt={title} className={styles.gameThumbnail} />
+                    <img src={image} alt={name} className={styles.gameThumbnail} />
                     <div className={styles.gameInfo}>
 
-                    <span className={styles.gameTitle}>{title}</span>
+                    <span className={styles.gameTitle}>{name}</span>
                     <button className={styles.gameButton}>
                       <FontAwesomeIcon icon={faPlay} /> Lounch
                     </button>

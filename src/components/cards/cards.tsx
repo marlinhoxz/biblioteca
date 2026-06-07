@@ -9,6 +9,7 @@ import {
   faFire,
   faPlay,
   faDownload,
+  faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import { DadosApi, GameFilter } from "../types/types";
 import { gameCategories } from "@/app/data/categoria";
@@ -19,6 +20,11 @@ export default function Cards() {
   const [filter, setFilter] = useState<GameFilter>("All games");
   const [dados, setDados] = useState<DadosApi[]>([]);
   const [loading, setLoading] = useState(true);
+  const [contextMenu, setContextMenu] = useState<{
+    x: number;
+    y: number;
+    jogoId: number;
+  } | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,6 +43,12 @@ export default function Cards() {
       }
     }
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const handleClick = () => setContextMenu(null);
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
   }, []);
 
   const filtros: GameFilter[] = [
@@ -117,7 +129,15 @@ export default function Cards() {
         ) : (
           jogosFiltrados.map(
             ({ id, name, image, trofeusObtidos, trofeusTotais, installed }) => (
-              <div key={id} className={styles.gameCard}>
+              <div
+                key={id}
+                className={styles.gameCard}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  setContextMenu({ x: e.clientX, y: e.clientY, jogoId: id });
+                }}
+                onClick={() => setContextMenu(null)}
+              >
                 <Image
                   src={image}
                   alt={name}
@@ -156,7 +176,8 @@ export default function Cards() {
                       <FontAwesomeIcon
                         icon={faDownload}
                         className={styles.iconDownload}
-                      /> Install
+                      />{" "}
+                      Install
                     </p>
                   )}
                 </div>
@@ -165,6 +186,21 @@ export default function Cards() {
           )
         )}
       </div>
+
+      {contextMenu && (
+        <ul
+          className={styles.contextMenu}
+          style={{ top: contextMenu.y, left: contextMenu.x }}
+        >
+          <li className={styles.menuItem}>Launch</li>
+          <li className={styles.menuItem}>Go to store page</li>
+          <li className={styles.menuItem}>Add to favorites</li>
+          <li className={styles.menuItemDivider} />
+          <li className={styles.contextMenuItem}>
+            <FontAwesomeIcon icon={faGear} /> Manage
+          </li>
+        </ul>
+      )}
     </section>
   );
 }

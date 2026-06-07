@@ -8,7 +8,6 @@ import {
   faWandMagicSparkles,
   faPlay,
   faDownload,
-  faBars,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUnrealEngine } from "@fortawesome/free-brands-svg-icons";
@@ -181,6 +180,20 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
           key={isActive ? "open" : "closed"}
           style={{ width: "50%" }} />
         </div>
+
+          {desenvolvido && (
+            <div className={styles.modalOverlay} onClick={() => setDesenvolvido(null)}>
+              <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <h2 className={styles.modalTitle}>Em Desenvolvimento</h2>
+                <p className={styles.modalDescription}>Área de {desenvolvido} ainda está em desenvolvimento.</p>
+                <button className={styles.modalButton} onClick={() => setDesenvolvido(null)}>
+                  Fechar
+                </button>
+              </div>
+
+            </div>
+          )}
+
       </aside>
     </>
   );

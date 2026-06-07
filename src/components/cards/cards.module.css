@@ -329,3 +329,51 @@
   font-size: 12px;
 
 }
+
+
+.contextMenu {
+  position: fixed;
+  background: #3d3c3c;
+  border: 1px solid var(--border-color);
+  border-radius: 8px; 
+  padding: 8px 0;
+  list-style: none;
+  z-index: 100;
+  min-width: 180px;
+  box-shadow: var(--shadow-md);
+}
+
+.menuItem {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10;
+  transition: background .2s ease;
+
+}
+
+.menuItem:hover {
+  background: var(--accent-glow);
+  color: var(--text-primary);
+}
+
+.menuItemDivider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 10px 0;
+}
+
+.contextMenuItem {
+  color: var(--text-secondary);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer
+}
+
+
+

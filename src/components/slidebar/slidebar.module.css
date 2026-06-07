@@ -194,6 +194,54 @@
 
 
 
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  padding: 20px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.modalTitle {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.modalDescription {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+.modalButton {
+  padding: 10px 20px;
+  border: none;
+  background: rgb(95, 92, 92);
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
 @media (max-width: 768px) {
   
 

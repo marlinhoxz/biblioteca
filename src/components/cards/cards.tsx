@@ -1,7 +1,15 @@
 "use client";
 import styles from "./cards.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faSliders, faUsers, faTrophy } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBell,
+  faSliders,
+  faUsers,
+  faTrophy,
+  faFire,
+  faPlay,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
 import { DadosApi, GameFilter } from "../types/types";
 import { gameCategories } from "@/app/data/categoria";
 import { useState, useEffect } from "react";
@@ -9,12 +17,10 @@ import Image from "next/image";
 
 export default function Cards() {
   const [filter, setFilter] = useState<GameFilter>("All games");
-
   const [dados, setDados] = useState<DadosApi[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     async function fetchData() {
       try {
         const response = await fetch("/api");
@@ -31,7 +37,7 @@ export default function Cards() {
       }
     }
     fetchData();
-  },[]);
+  }, []);
 
   const filtros: GameFilter[] = [
     "All games",
@@ -41,8 +47,9 @@ export default function Cards() {
     "Multiplayer",
   ];
 
-  const jogosFiltrados= dados.filter((jogo) => {
-   const categoriaCorreta = filter === "All games" ? true : gameCategories[jogo.id] === filter;
+  const jogosFiltrados = dados.filter((jogo) => {
+    const categoriaCorreta =
+      filter === "All games" ? true : gameCategories[jogo.id] === filter;
     return categoriaCorreta;
   });
 
@@ -94,13 +101,11 @@ export default function Cards() {
         ))}
         <button className={styles.addFilter}>+</button>
       </div>
-      
+
       <div className={styles.installFilter}>
-        
-          <button className={styles.installFilterButton}>Installed</button>
-          <button className={styles.buttonFilter}>All</button>
-        
-        
+        <button className={styles.installFilterButton}>Installed</button>
+        <button className={styles.buttonFilter}>All</button>
+
         <button className={styles.installButtonIcon}>
           <FontAwesomeIcon icon={faSliders} />
         </button>
@@ -110,23 +115,55 @@ export default function Cards() {
         {loading ? (
           <p className={styles.loading}>Carregando jogos...</p>
         ) : (
-          jogosFiltrados.map(({ id, name, image }) => (
-            <div key={id} className={styles.gameCard}>
-              <Image
-                src={image}
-                alt={name}
-                width={200}
-                height={300}
-              />
-              <h4 className={styles.gameName}>{name}</h4>
-              <div className={styles.gameTrofeus}>
-                <FontAwesomeIcon icon={faTrophy} />
-                <span className={styles.trofeusText}></span>
+          jogosFiltrados.map(
+            ({ id, name, image, trofeusObtidos, trofeusTotais, installed }) => (
+              <div key={id} className={styles.gameCard}>
+                <Image
+                  src={image}
+                  alt={name}
+                  width={700}
+                  height={700}
+                  quality={100}
+                  className={styles.imgCard}
+                />
+                <div className={styles.gameInfo}>
+                  <h4 className={styles.gameName}>{name}</h4>
+                  <span>...</span>
+                </div>
+                <div className={styles.gameTrofeus}>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={
+                        trofeusObtidos === trofeusTotais ? faFire : faTrophy
+                      }
+                      className={
+                        trofeusObtidos === trofeusTotais
+                          ? styles.iconFire
+                          : styles.iconTrophy
+                      }
+                    />
+                    <span className={styles.trofeusText}>
+                      {trofeusObtidos}/{trofeusTotais}
+                    </span>
+                  </div>
+                  {installed ? (
+                    <FontAwesomeIcon
+                      icon={faPlay}
+                      className={styles.iconPlay}
+                    />
+                  ) : (
+                    <p className={styles.installButton}>
+                      <FontAwesomeIcon
+                        icon={faDownload}
+                        className={styles.iconDownload}
+                      /> Install
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))
+            ),
+          )
         )}
-
       </div>
     </section>
   );

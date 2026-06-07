@@ -6,7 +6,7 @@ export async function GET() {
 try {
 
     const response = await fetch("https://api-projeto-orpin.vercel.app/api",{
-        next: {revalidate: 3600 }
+        cache: "no-store",
     })
 
     if (!response.ok) { 

@@ -27,17 +27,17 @@ Para evitar erros de carregamento e facilitar o controle, criei uma rota interna
 
 **Destaque:** No código, eu verifico se a URL da imagem vinda da API está completa. Se não estiver, o sistema adiciona o link base automaticamente para que nada fique quebrado na tela.
 
+
 ## 📁 Organização das pastas
 
-src/
-├── app/
-│   ├── api/          # Rota de API para consumo de dados
-│   └── layout.tsx    # Layout principal da aplicação
-├── components/       # Componentes reutilizáveis
-│   ├── cards/        # Grid de jogos e cards (CSS Modules)
-│   └── slidebar/     # Menu lateral e navegação (CSS Modules)
-└── styles/           # Variáveis globais e temas
-```
+- `app/`: Contém as rotas principais da aplicação.
+  - `api/`: Onde ficam as rotas da API para buscar os dados.
+  - `layout.tsx`: O layout geral da aplicação.
+- `components/`: Componentes reutilizáveis da interface.
+  - `cards/`: Componentes para exibir os jogos em formato de cards.
+  - `slidebar/`: Componentes para o menu lateral de navegação.
+- `styles/`: Arquivos CSS globais e variáveis de tema.
 
+```
 ---
-Feito por Marlon.
+By: Marlinho.

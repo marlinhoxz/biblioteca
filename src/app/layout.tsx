@@ -3,7 +3,6 @@ import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -17,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" >
+    <html lang="pt-br">
       <body>{children}</body>
     </html>
   );

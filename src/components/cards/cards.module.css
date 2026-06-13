@@ -113,6 +113,7 @@
   border-radius: 50%;
   object-fit: cover;
   position: relative;
+  cursor: pointer;
 }
 
 .userAvatar::before {
@@ -125,6 +126,10 @@
   border-radius: 50%;
   bottom: 3px;
   right: 3px;
+}
+
+.containerIcons {
+  position: relative;
 }
 
 .filterGames {
@@ -166,6 +171,17 @@
 
 .filterButtonActive::after {
   width: 70%;
+}
+
+.filterToggle {
+  display: none;
+}
+
+.filterList {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .addFilter {
@@ -237,15 +253,14 @@
   color: var(--text-secondary);
 }
 
-
 .gameCard {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   padding: 15px;
-  border-radius: 12px
+  border-radius: 12px;
 }
 
 .gameCard:hover {
-  background: #3d3c3c;;
+  background: #3d3c3c;
   transform: scale(1.02);
 }
 
@@ -255,7 +270,7 @@
   display: block;
   border-radius: 7px;
   box-shadow: var(--shadow-md);
-  transition: all .6s ease;
+  transition: all 0.6s ease;
   height: auto;
   aspect-ratio: 460 / 215;
 }
@@ -263,7 +278,6 @@
 .imgCard:hover {
   transform: scale(1.03);
 }
-
 
 .gameInfo {
   display: flex;
@@ -323,19 +337,16 @@
   color: var(--text-secondary);
 }
 
-
 .trofeusText {
   color: var(--text-secondary);
   font-size: 12px;
-
 }
-
 
 .contextMenu {
   position: fixed;
   background: #3d3c3c;
   border: 1px solid var(--border-color);
-  border-radius: 8px; 
+  border-radius: 8px;
   padding: 8px 0;
   list-style: none;
   z-index: 100;
@@ -350,9 +361,8 @@
   color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 10;
-  transition: background .2s ease;
-
+  gap: 10px;
+  transition: background 0.2s ease;
 }
 
 .menuItem:hover {
@@ -371,9 +381,186 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  padding: 10px;
   gap: 10px;
-  cursor: pointer
+  cursor: pointer;
 }
 
+.contextMenuItem:hover {
+  background: var(--accent-glow);
+  color: var(--text-primary);
+}
 
+/* ── Responsivo ── */
 
+@media (max-width: 1024px) {
+  .cardsContainer {
+    padding: 20px;
+  }
+
+  .searchBar label {
+    font-size: 36px;
+  }
+
+  .gamesList {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .icons,
+  .iconsUser {
+    display: none;
+  }
+
+  .gamesList {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .searchBar {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .searchBar label {
+    font-size: 26px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .searchContainer {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+  }
+
+  .searchInput {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 14px;
+    box-sizing: border-box;
+  }
+
+  .containerIcons {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .filterToggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .filterList {
+    display: none;
+    width: 100%;
+  }
+
+  .filterListOpen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 4px;
+    position: absolute;
+    z-index: 200;
+    width: 280px;
+    animation: fadeIn 0.15s ease;
+  }
+
+  .filterListOpen .filterButton {
+    width: 50%;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .filterListOpen .filterButton:hover {
+    background: var(--accent-glow);
+  }
+
+  .filterListOpen .addFilter {
+    width: 100%;
+    border-radius: 6px;
+    text-align: left;
+    justify-content: flex-start;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gamesList {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .gameCard {
+    padding: 8px;
+  }
+
+  .gameName {
+    font-size: 12px;
+  }
+
+  .trofeusText {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cardsContainer {
+    padding: 10px;
+  }
+
+  .gamesList {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .gameCard {
+    padding: 6px;
+  }
+
+  .gameName {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .gamesList {
+    grid-template-columns: 1fr;
+  }
+
+  .searchBar label {
+    font-size: 20px;
+  }
+
+  .iconsContainer {
+    gap: 6px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -8,20 +8,20 @@ import Cards from "@/components/cards/cards";
 import { useState } from "react";
 
 export default function Home() {
-
   const [menuAberto, setMenuAberto] = useState(false);
-
-
 
   return (
     <section className={styles.container}>
       {!menuAberto && (
-        <button type="button" className={styles.hamburger} onClick={() => setMenuAberto(true)}>
+        <button
+          className={styles.hamburger}
+          onClick={() => setMenuAberto(true)}
+        >
           <FontAwesomeIcon icon={faBars} />
         </button>
       )}
       <Sidebar isActive={menuAberto} onClose={() => setMenuAberto(false)} />
-      <Cards /> 
+      <Cards />
     </section>
   );
 }

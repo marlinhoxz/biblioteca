@@ -59,6 +59,8 @@ export default function Sidebar({ isActive = false, onClose }: SidebarProps) {
   const [desenvolvido, setDesenvolvido] = useState<string | null>(null);
   const [dados, setDados] = useState<DadosApi[]>([]);
   const [loading, setLoading] = useState(true);
+  
+
 
   useEffect(() => {
     async function fetchData() {

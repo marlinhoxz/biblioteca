@@ -1,12 +1,7 @@
 .container {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
 }
-
-
-
-
-
 
 .hamburger {
   display: none;
@@ -25,7 +20,7 @@
     color: #fff;
     font-size: 22px;
     opacity: 0;
-    animation: fadeIn .5s ease  .25s forwards;
+    animation: fadeIn 0.5s ease 0.25s forwards;
   }
 
   @keyframes fadeIn {
@@ -35,5 +30,5 @@
     to {
       opacity: 1;
     }
-}
+  }
 }

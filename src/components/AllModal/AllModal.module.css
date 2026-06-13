@@ -1,0 +1,177 @@
+.modal {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #1e1e2e;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  min-width: 220px;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.15s ease;
+}
+
+.pModal {
+  color: var(--text-secondary);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.modalAvatarHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.modalAvatarImg {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.modalUsername {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.modalStatus {
+  font-size: 12px;
+  color: #a0a0b0;
+}
+
+.modalDivider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 0;
+}
+
+.modalList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modalListItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.modalListItem:hover {
+  background: var(--accent-glow);
+  color: var(--text-primary);
+}
+
+.modalListItemDanger {
+  color: #ff6b6b;
+}
+
+.modalListItemDanger:hover {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
+}
+
+.modalIcon {
+  width: 14px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .modal {
+    min-width: 200px;
+    padding: 14px;
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .modalListItem {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .modalUsername {
+    font-size: 13px;
+  }
+
+  .modalStatus {
+    font-size: 11px;
+  }
+
+  .pModal {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    min-width: 180px;
+    padding: 12px;
+    gap: 4px;
+  }
+
+  .modalAvatarHeader {
+    gap: 8px;
+  }
+
+  .modalListItem {
+    padding: 8px;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .modalUsername {
+    font-size: 12px;
+  }
+
+  .modalIcon {
+    width: 12px;
+  }
+
+  .pModal {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .modal {
+    min-width: 160px;
+    padding: 10px;
+  }
+
+  .modalListItem {
+    padding: 7px;
+    font-size: 11px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

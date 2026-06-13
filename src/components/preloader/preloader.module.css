@@ -35,23 +35,42 @@
 .name {
   font-size: 52px;
   font-weight: 800;
- font-family: "Bebas Neue", sans-serif;
-  color: transparent;
-  background: linear-gradient(90deg, #8c8d8f, #aca1b4);
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 8px;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #aeaec9 0%,
+    #575768 20%,
+    #7d7d7e 40%,
+    #ffffff 50%,
+    #d1c9da 60%,
+    #fdfdfd 80%,
+    #eeeef1 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
-  letter-spacing: 2px;
-  animation: fadeUp 0.8s ease 0.3s forwards;
+  color: transparent;
+  background-size: 300% 100%;
+  background-position: 150% center;
+  animation:
+    fadeUp 0.8s ease 0.3s forwards,
+    shine 1.8s ease 1.2s forwards;
   opacity: 0;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes shine {
+  from { background-position: 150% center; }
+  to   { background-position: -50% center; }
 }

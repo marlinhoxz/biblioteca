@@ -6,12 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Cards from "@/components/cards/cards";
 import { useState } from "react";
+import Preloader from "@/components/preloader/preloader";
 
 export default function Home() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
     <section className={styles.container}>
+      <Preloader />
       {!menuAberto && (
         <button
           className={styles.hamburger}
